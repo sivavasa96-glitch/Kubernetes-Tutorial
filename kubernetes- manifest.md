@@ -23,3 +23,11 @@
 
         Environment variables
  
+3. Basic Structure of a Manifest File
+
+---hcl
+apiVersion: 
+kind: 
+metadata:
+spec:
+---
