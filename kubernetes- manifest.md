@@ -12,19 +12,14 @@
     Instead of running many commands, you write a YAML file describing:
 
         Application image
-
         Number of replicas
-
         Ports
-
         Storage
-
         Configuration
-
         Environment variables
  
 3. Basic Structure of a Manifest File
-   
+    
     apiVersion: 
     kind: 
     metadata:
