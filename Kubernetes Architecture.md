@@ -5,7 +5,8 @@ Kubernetes has two main parts:
 
     1) Control Plane (Master) → Brain of the cluster
     2) Worker Nodes → Where your applications actually run
-    below images as your reference 
+
+  
     ![image](image-1.png)
 
 1) Control Plane Components :
