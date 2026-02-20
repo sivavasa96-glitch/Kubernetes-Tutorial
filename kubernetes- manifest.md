@@ -24,10 +24,9 @@
         Environment variables
  
 3. Basic Structure of a Manifest File
-
----
-apiVersion: 
-kind: 
-metadata:
-spec:
----
+   
+    apiVersion: 
+    kind: 
+    metadata:
+    spec:
+ 
