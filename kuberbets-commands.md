@@ -1,22 +1,12 @@
 Important commands used:
 ========================
 
-kubectl version:
-================
-
-	Shows kubectl client and Kubernetes server version.
-
-
+	kubectl version:Shows kubectl client and Kubernetes server version.
 	kubectl get pods – Shows all running pods in the cluster.
-
 	kubectl get pods -n kube-system – Lists system pods in kube-system namespace.
-
 	kubectl get pods -l app=nginx – Shows pods with label app=nginx.
-
 	kubectl describe pod etcd-minikube -n kube-system – Shows detailed info about etcd-minikube pod.
-
 	kubectl describe pod – Shows detailed information about a specific pod.
-
 	kubectl run althaf-nginx --image=nginx – Creates and runs a pod using nginx image.
 
 	kubectl exec -it althaf-nginx -- /bin/bash – Opens terminal inside the pod.
