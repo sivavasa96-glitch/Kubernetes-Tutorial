@@ -21,7 +21,10 @@
 3. Basic Structure of a Manifest File
     
     apiVersion: 
+
     kind: 
+
     metadata:
+    
     spec:
  
