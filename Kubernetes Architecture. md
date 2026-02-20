@@ -8,24 +8,25 @@ Kubernetes has two main parts:
 1) Control Plane Components (Master / Brain)
 
 ✅ Step 1: API Server (kube-apiserver)
+
 This is the main entry point.
 When you run kubectl apply -f deployment.yaml, it goes to API Server
 All requests (UI, CLI, CI/CD) talk to API Server only
-👉 In short: API Server = Front door of Kubernetes
+
 ✅ Step 2: etcd (Database)
 This is the key-value database of Kubernetes.
 Stores cluster state like:
 Pods, services, deployments
 secrets, configmaps
 node info
-👉 In short: etcd = Kubernetes brain memory
+
 ✅ Step 3: Scheduler (kube-scheduler)
 Now Kubernetes decides: “Which node should run this pod?”
 Scheduler checks:
 CPU / memory availability
 node labels, taints, affinity rules
 Then it assigns pod to the best node.
-👉 In short: Scheduler = Pod placement manager
+
 ✅ Step 4: Controller Manager (kube-controller-manager)
 This component ensures the cluster is always in the desired state.
 Example:
@@ -35,13 +36,13 @@ It handles controllers like:
 Node controller
 Replication controller
 Job controller
-👉 In short: Controller Manager = Auto-correction system
+
 ✅ Step 5: Cloud Controller Manager (in cloud like AWS/Azure)
 This is used in cloud environments to manage:
 Load balancers
 volumes
 cloud networking
-👉 In short: Cloud Controller = Kubernetes talking to cloud services
+
 2) Worker Node Components (Where app runs)
 ✅ Step 6: Node (Worker Machine)
 Worker node can be:
@@ -54,17 +55,17 @@ Kubelet is like the agent inside every node.
 It talks to API server
 It ensures containers are running properly
 If pod needs to start → kubelet starts it using container runtime
-👉 In short: Kubelet = Node manager agent
+
 ✅ Step 8: Container Runtime (Docker / containerd / CRI-O)
 This is the tool that actually runs containers.
 Kubernetes doesn’t run containers directly — runtime does.
-👉 In short: Runtime = Engine that runs containers
+
 ✅ Step 9: Kube-proxy (Networking)
 Kube-proxy handles:
 service networking
 load balancing inside cluster
 routes traffic to correct pod
 Example: Service → forwards traffic to pod1, pod2, pod3.
-👉 In short: kube-proxy = Traffic router inside cluster
+
 
 
