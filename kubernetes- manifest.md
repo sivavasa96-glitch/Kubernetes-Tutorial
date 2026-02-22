@@ -25,6 +25,7 @@
     kind: 
 
     metadata:
-    
+
     spec:
  
+ kubectl apply -f filename.yaml
