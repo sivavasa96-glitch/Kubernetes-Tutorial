@@ -22,22 +22,21 @@ Let me explain clearly 👇
 Docker
 ======
 
----
 Used to build container images
 Run application inside a container
 Works well for single-container or small setups
 Example: docker run myapp
----
+
 
 Kubernetes
 ===========
 
----
+
 Used to manage multiple containers
 Handles scaling, load balancing, self-healing
 Used in production for microservices
 Example: automatically restart container if it crashes
----
+
 
 what is advantage of kubernetes
 ================================
