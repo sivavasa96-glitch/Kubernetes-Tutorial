@@ -61,3 +61,27 @@
 
  Manifest removal: Manifests can be removed when you need to completely remove a resource from the node. 
  Manifest upgrade: During an application upgrade, some resources might need to be removed while others are retained to preserve data.
+
+
+ example of syntax:
+ ==================
+
+ apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+        ports:
+        - containerPort: 80
