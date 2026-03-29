@@ -60,6 +60,7 @@
  kubectl apply -f filename.yaml
 
  Manifest removal: Manifests can be removed when you need to completely remove a resource from the node. 
+ 
  Manifest upgrade: During an application upgrade, some resources might need to be removed while others are retained to preserve data.
 
 
