@@ -65,7 +65,7 @@
 
  example of syntax:
  ==================
-
+---
  apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -85,3 +85,4 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
+---
