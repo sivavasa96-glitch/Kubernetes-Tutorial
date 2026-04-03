@@ -6,75 +6,79 @@ Kubernetes has two main parts:
     1) Control Plane (Master) → Brain of the cluster
     2) Worker Nodes → Where your applications actually run
 
-```hcl
 
-    ![image](image.png)
+![image](image.png)
 
-```
+
 1) Control Plane Components :
 ============================
 
 
-    1: API Server (kube-apiserver)
+1: API Server (kube-apiserver)
 
         This is the main entry point.
-When you run kubectl apply -f deployment.yaml, it goes to API Server
-All requests (UI, CLI, CI/CD) talk to API Server only
+        When you run kubectl apply -f deployment.yaml, it goes to API Server
+        All requests (UI, CLI, CI/CD) talk to API Server only
 
 ✅ Step 2: etcd (Database)
-This is the key-value database of Kubernetes.
-Stores cluster state like:
-Pods, services, deployments
-secrets, configmaps
-node info
+
+    This is the key-value database of Kubernetes.
+    Stores cluster state like:
+    Pods, services, deployments
+    secrets, configmaps
+    node info
 
 ✅ Step 3: Scheduler (kube-scheduler)
-Now Kubernetes decides: “Which node should run this pod?”
-Scheduler checks:
-CPU / memory availability
-node labels, taints, affinity rules
-Then it assigns pod to the best node.
+
+    Now Kubernetes decides: “Which node should run this pod?”
+    Scheduler checks:
+    CPU / memory availability
+    node labels, taints, affinity rules
+    Then it assigns pod to the best node.
 
 ✅ Step 4: Controller Manager (kube-controller-manager)
-This component ensures the cluster is always in the desired state.
-Example:
-You said replicas = 3
-If one pod dies, controller creates another pod
-It handles controllers like:
-Node controller
-Replication controller
-Job controller
+
+    This component ensures the cluster is always in the desired state.
+    Example:
+    You said replicas = 3
+    If one pod dies, controller creates another pod
+    It handles controllers like:
+    Node controller
+    Replication controller
+    Job controller
 
 ✅ Step 5: Cloud Controller Manager (in cloud like AWS/Azure)
-This is used in cloud environments to manage:
-Load balancers
-volumes
-cloud networking
+
+    This is used in cloud environments to manage:
+    Load balancers
+    volumes
+    cloud networking
 
 2) Worker Node Components (Where app runs)
 
-✅ Step 6: Node (Worker Machine)
-Worker node can be:
-VM
-physical server
-cloud instance
-This is where your pods run.
+    ✅ Step 6: Node (Worker Machine)
+    Worker node can be:
+    VM
+    physical server
+    cloud instance
+    This is where your pods run.
+
 ✅ Step 7: Kubelet
-Kubelet is like the agent inside every node.
-It talks to API server
-It ensures containers are running properly
-If pod needs to start → kubelet starts it using container runtime
+    Kubelet is like the agent inside every node.
+    It talks to API server
+    It ensures containers are running properly
+    If pod needs to start → kubelet starts it using container runtime
 
 ✅ Step 8: Container Runtime (Docker / containerd / CRI-O)
-This is the tool that actually runs containers.
-Kubernetes doesn’t run containers directly — runtime does.
+    This is the tool that actually runs containers.
+    Kubernetes doesn’t run containers directly — runtime does.
 
 ✅ Step 9: Kube-proxy (Networking)
-Kube-proxy handles:
-service networking
-load balancing inside cluster
-routes traffic to correct pod
-Example: Service → forwards traffic to pod1, pod2, pod3.
+    Kube-proxy handles:
+    service networking
+    load balancing inside cluster
+    routes traffic to correct pod
+    Example: Service → forwards traffic to pod1, pod2, pod3.
 
 
 
