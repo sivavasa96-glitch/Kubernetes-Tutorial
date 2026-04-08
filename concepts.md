@@ -1,3 +1,6 @@
+
+![image](image-1.png)
+
 1. Kubernetes Cluster
 
 2. Control Plane (Brain of Kubernetes)
@@ -36,14 +39,14 @@
 
 19. Advanced Concepts (For Later)
 
-StatefulSets
+20. StatefulSets & Sateless
 
-DaemonSets
+21. DaemonSets
 
-Jobs & CronJobs
+22. Jobs & CronJobs
 
-Helm
+23. Helm
 
-Operators
+24. Operators
 
-CRDs
+25. CRDs

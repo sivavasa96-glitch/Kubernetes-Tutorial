@@ -6,79 +6,74 @@ Kubernetes has two main parts:
     1) Control Plane (Master) → Brain of the cluster
     2) Worker Nodes → Where your applications actually run
 
-
 ![image](image.png)
 
 
-1) Control Plane Components :
-============================
+Kubernetes architecture is mainly divided into two parts:
+==========================================================
 
 
-1: API Server (kube-apiserver)
+1) Control Plane (Master Node)
 
-        This is the main entry point.
-        When you run kubectl apply -f deployment.yaml, it goes to API Server
-        All requests (UI, CLI, CI/CD) talk to API Server only
+    The control plane is the brain of Kubernetes. It manages the cluster and decides what should run where.
 
-✅ Step 2: etcd (Database)
+    Key Control Plane Components:
 
-    This is the key-value database of Kubernetes.
-    Stores cluster state like:
-    Pods, services, deployments
-    secrets, configmaps
-    node info
+1. API Server (kube-apiserver)
 
-✅ Step 3: Scheduler (kube-scheduler)
+This is the main entry point of Kubernetes.
+All requests from users, kubectl, or CI/CD tools go through the API server.
+So API server accepts all requests and gives responses.
 
-    Now Kubernetes decides: “Which node should run this pod?”
-    Scheduler checks:
-    CPU / memory availability
-    node labels, taints, affinity rules
-    Then it assigns pod to the best node.
+2. etcd
 
-✅ Step 4: Controller Manager (kube-controller-manager)
+It is a key-value database.
+Stores the complete cluster information like pods, nodes, configs, secrets, deployments, etc.
 
-    This component ensures the cluster is always in the desired state.
-    Example:
-    You said replicas = 3
-    If one pod dies, controller creates another pod
-    It handles controllers like:
-    Node controller
-    Replication controller
-    Job controller
+3. Scheduler (kube-scheduler)
 
-✅ Step 5: Cloud Controller Manager (in cloud like AWS/Azure)
+It decides on which worker node the pod should run.
+It checks CPU, memory, node availability, and resource requirements.
 
-    This is used in cloud environments to manage:
-    Load balancers
-    volumes
-    cloud networking
+Example:
+If pod needs CPU and memory, scheduler checks all worker nodes and selects the best node.
 
-2) Worker Node Components (Where app runs)
+So scheduler is responsible for pod placement.
 
-    ✅ Step 6: Node (Worker Machine)
-    Worker node can be:
-    VM
-    physical server
-    cloud instance
-    This is where your pods run.
+4. Controller Manager (kube-controller-manager)
 
-✅ Step 7: Kubelet
-    Kubelet is like the agent inside every node.
-    It talks to API server
-    It ensures containers are running properly
-    If pod needs to start → kubelet starts it using container runtime
+It ensures the desired state matches the actual state.
+Example: if a pod crashes, it creates a new pod automatically.
 
-✅ Step 8: Container Runtime (Docker / containerd / CRI-O)
-    This is the tool that actually runs containers.
-    Kubernetes doesn’t run containers directly — runtime does.
+Example:
+If I want 3 pods, but only 2 pods are running, controller manager will create 1 more pod.
 
-✅ Step 9: Kube-proxy (Networking)
-    Kube-proxy handles:
-    service networking
-    load balancing inside cluster
-    routes traffic to correct pod
-    Example: Service → forwards traffic to pod1, pod2, pod3.
+So controller manager maintains desired state.
+
+5. Cloud Controller Manager (optional)
+
+Used when Kubernetes runs in cloud like AWS, Azure, GCP.
+It manages cloud resources like Load Balancers, volumes, and networking.
+2) Worker Nodes
+
+Worker nodes are the machines where applications actually run.
+
+Worker Node Components:
+
+1. Kubelet
+
+It is an agent running on every worker node.
+It communicates with API server and ensures pods are running properly.
+
+2. Container Runtime
+
+Example: Docker, containerd, CRI-O
+It is responsible for running containers inside pods.
+
+3. Kube-proxy
+
+Handles networking and load balancing inside the cluster.
+It manages services and routes traffic to correct pods.
 
 
 
